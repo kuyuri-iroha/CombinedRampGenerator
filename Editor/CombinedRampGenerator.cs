@@ -532,7 +532,7 @@ namespace CombinedRampGenerator
             saveData.height = height;
             saveData.divideCount = divideCount;
             saveData.exportMode = exportMode;
-
+            
             var directoryPath = Path.GetDirectoryName($"{Application.dataPath}/{DataPath}");
             if (!Directory.Exists(directoryPath))
             {
