@@ -1,0 +1,19 @@
+﻿{
+  "name": "com.kuyuri.combinedrampgenerator",
+  "displayName": "CombinedRampGenerator",
+  "version": "0.1.0",
+  "unity": "2021.2",
+  "description": "Fixed・Blendの両モードのグラデーションを結合したRampテクスチャのジェネレータ",
+  "dependencies": {},
+  "samples": [],
+  "keywords": [
+    "texture generator",
+    "ramp"
+  ],
+  "author": {
+    "name": "Kuyuri Iroha",
+    "email": "kuyuri.iroha@gmail.com",
+    "url": "https://kuyuri-iroha.com"
+  },
+  "license": "MIT"
+}

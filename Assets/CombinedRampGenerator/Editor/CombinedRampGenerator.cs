@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace CombinedRampGenerator
     /// </summary>
     public class CombinedRampGenerator : EditorWindow
     {
-        private static string DataPath = "Assets/Editor/CombinedRampGeneratorData.asset";
+        private const string DataFileName = "CombinedRampGeneratorData.asset";
         private List<PaletteData> paletteData = new List<PaletteData>();
         private int width = 256;
         private int height = 256;
@@ -191,6 +192,16 @@ namespace CombinedRampGenerator
             return result;
         }
 
+        /// <summary>
+        /// 実行されているファイルが格納されているディレクトリパスを取得する
+        /// </summary>
+        /// <param name="sourceFilePath">自動的にファイルパスが入るので指定禁止</param>
+        /// <returns>ファイルが格納されているディレクトリパス</returns>
+        private string GetRelativeCurrentDirectory([CallerFilePath] string sourceFilePath = "")
+        {
+            return Path.GetRelativePath(Directory.GetCurrentDirectory(), Path.GetDirectoryName(sourceFilePath));
+        }
+
         private void OnEnable()
         {
             var visualTree = Resources.Load<VisualTreeAsset>("CombinedRampGeneratorUI");
@@ -213,7 +224,8 @@ namespace CombinedRampGenerator
             var gradientSetting = DeepFind<GradientField>("Gradient", settingContainer);
 
             // データのロード
-            var data = AssetDatabase.LoadAssetAtPath<CombinedRampGeneratorData>(DataPath);
+            var directoryPath = GetRelativeCurrentDirectory();
+            var data = AssetDatabase.LoadAssetAtPath<CombinedRampGeneratorData>($"{directoryPath}/{DataFileName}");
             if (data && data.paletteDatas != null)
             {
                 paletteData.AddRange(data.paletteDatas);
@@ -531,7 +543,8 @@ namespace CombinedRampGenerator
             saveData.height = height;
             saveData.divideCount = divideCount;
             saveData.exportMode = exportMode;
-            AssetDatabase.CreateAsset(saveData, DataPath);
+            var directoryPath = GetRelativeCurrentDirectory();
+            AssetDatabase.CreateAsset(saveData, $"{directoryPath}/{DataFileName}");
             AssetDatabase.Refresh();
 
             if (previewTexture) DestroyImmediate(previewTexture);
