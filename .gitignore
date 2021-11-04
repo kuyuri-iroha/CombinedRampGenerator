@@ -68,8 +68,9 @@ crashlytics-build.properties
 
 # End of https://www.gitignore.io/api/unity
 
-
-Assets/Scripts/CharactorControl_ease.cs
-Assets/Scripts/CharactorControl_ease.cs.meta
 .vs
 .idea/
+
+Assets/Editor/CombinedRampGenerator/
+Assets/Editor/CombinedRampGenerator.meta
+Assets/Editor.meta

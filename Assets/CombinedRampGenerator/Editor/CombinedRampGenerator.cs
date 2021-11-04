@@ -46,7 +46,7 @@ namespace CombinedRampGenerator
     /// </summary>
     public class CombinedRampGenerator : EditorWindow
     {
-        private const string DataFileName = "CombinedRampGeneratorData.asset";
+        private const string DataPath = "Editor/CombinedRampGenerator/CombinedRampGeneratorData.asset";
         private List<PaletteData> paletteData = new List<PaletteData>();
         private int width = 256;
         private int height = 256;
@@ -192,16 +192,6 @@ namespace CombinedRampGenerator
             return result;
         }
 
-        /// <summary>
-        /// 実行されているファイルが格納されているディレクトリパスを取得する
-        /// </summary>
-        /// <param name="sourceFilePath">自動的にファイルパスが入るので指定禁止</param>
-        /// <returns>ファイルが格納されているディレクトリパス</returns>
-        private string GetRelativeCurrentDirectory([CallerFilePath] string sourceFilePath = "")
-        {
-            return Path.GetRelativePath(Directory.GetCurrentDirectory(), Path.GetDirectoryName(sourceFilePath));
-        }
-
         private void OnEnable()
         {
             var visualTree = Resources.Load<VisualTreeAsset>("CombinedRampGeneratorUI");
@@ -224,8 +214,7 @@ namespace CombinedRampGenerator
             var gradientSetting = DeepFind<GradientField>("Gradient", settingContainer);
 
             // データのロード
-            var directoryPath = GetRelativeCurrentDirectory();
-            var data = AssetDatabase.LoadAssetAtPath<CombinedRampGeneratorData>($"{directoryPath}/{DataFileName}");
+            var data = AssetDatabase.LoadAssetAtPath<CombinedRampGeneratorData>($"Assets/{DataPath}");
             if (data && data.paletteDatas != null)
             {
                 paletteData.AddRange(data.paletteDatas);
@@ -543,8 +532,14 @@ namespace CombinedRampGenerator
             saveData.height = height;
             saveData.divideCount = divideCount;
             saveData.exportMode = exportMode;
-            var directoryPath = GetRelativeCurrentDirectory();
-            AssetDatabase.CreateAsset(saveData, $"{directoryPath}/{DataFileName}");
+
+            var directoryPath = Path.GetDirectoryName($"{Application.dataPath}/{DataPath}");
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            AssetDatabase.CreateAsset(saveData, $"Assets/{DataPath}");
             AssetDatabase.Refresh();
 
             if (previewTexture) DestroyImmediate(previewTexture);
