@@ -1,4 +1,4 @@
-﻿# CombinedRampGenerator
+# CombinedRampGenerator
 
 ## 概要
 
