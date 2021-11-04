@@ -1,12 +1,16 @@
-{
+﻿{
   "name": "com.kuyuri.combinedrampgenerator",
-  "displayName": "CombinedRampGenerator",
-  "version": "0.1.0",
+  "displayName": "Combined Ramp Generator",
+  "version": "0.2.0",
   "unity": "2021.2",
+  "documentationUrl": "https://github.com/kuyuri-iroha/CombinedRampGenerator",
+  "changelogUrl": "https://github.com/kuyuri-iroha/CombinedRampGenerator/blob/master/CHANGELOG.md",
+  "licensesUrl": "https://github.com/kuyuri-iroha/CombinedRampGenerator/blob/master/LICENSE",
   "description": "Fixed・Blendの両モードのグラデーションを結合したRampテクスチャのジェネレータ",
   "keywords": [
     "texture generator",
-    "ramp"
+    "ramp",
+    "gradation"
   ],
   "author": {
     "name": "Kuyuri Iroha",
