@@ -77,7 +77,7 @@ Exportボタンをクリックすると、生成したTextureをpng画像とし�
 
 Export ModeをMergedにして出力する場合、以下のような画像が出力されます。
 
-![MergedResult](Documentation/Images/ColorPalette_202111041708.png)
+![MergedResult](./Documentation/Images/ColorPalette_202111041708.png)
 > Width: 1024 \
 > Height: 256 \
 > Export Mode: Merged
@@ -88,12 +88,12 @@ Export ModeをSplitにして出力する場合、分割数の数の画像が出�
 
 なお、結合済みのセルは途中で切り離されて出力されます。
 
-![Color0](Documentation/Images/split/Color_0.png)
-![Color1](Documentation/Images/split/Color_1.png)
-![Color2](Documentation/Images/split/Color_2.png)
-![Color3](Documentation/Images/split/Color_3.png)
-![Color4](Documentation/Images/split/Color_4.png)
-![Color5](Documentation/Images/split/Color_5.png)
+![Color0](./Documentation/Images/split/Color_0.png)
+![Color1](./Documentation/Images/split/Color_1.png)
+![Color2](./Documentation/Images/split/Color_2.png)
+![Color3](./Documentation/Images/split/Color_3.png)
+![Color4](./Documentation/Images/split/Color_4.png)
+![Color5](./Documentation/Images/split/Color_5.png)
 > Width: 1024 \
 > Height: 256 \
 > Export Mode: Split
